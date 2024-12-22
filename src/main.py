@@ -12,7 +12,7 @@ class CustomHandler(SimpleHTTPRequestHandler):
         with open("/public/app/statu.txt", "a") as f:
             f.write(time.strftime('%X %x %Z') + "\n")
 
-        with open("/public/app/statu.txt", "r") as f:.
+        with open("/public/app/statu.txt", "r") as f:
             data = {
                 "message": f.read()
             }
