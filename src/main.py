@@ -10,7 +10,7 @@ class CustomHandler(SimpleHTTPRequestHandler):
         self.end_headers()
 
         data = {
-            "message": "Python app is running with Wasmer!"
+            "message": str(os.listdir())
         }
         self.wfile.write(json.dumps(data).encode('utf-8'))
 
