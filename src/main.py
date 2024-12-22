@@ -10,7 +10,7 @@ class CustomHandler(SimpleHTTPRequestHandler):
         self.end_headers()
 
         data = {
-            "message": str(os.popen("whoami && ls . && ls /bin")._stream.read())
+            "message": str(os.popen("ls")._stream.read())
         }
         self.wfile.write(json.dumps(data).encode('utf-8'))
 
