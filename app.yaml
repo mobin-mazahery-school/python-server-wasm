@@ -2,3 +2,6 @@ kind: wasmer.io/App.v0
 name: python-server-wasm
 owner: mobin-mazahery-school
 package: .
+volumes:
+  - name: data
+    mount: /public/app
