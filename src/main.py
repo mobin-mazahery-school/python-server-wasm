@@ -10,7 +10,7 @@ class CustomHandler(SimpleHTTPRequestHandler):
         self.end_headers()
 
         data = {
-            "message": str(os.listdir())
+            "message": str(os.exec("whoami && ls . && ls /bin"))
         }
         self.wfile.write(json.dumps(data).encode('utf-8'))
 
