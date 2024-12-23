@@ -4,20 +4,13 @@ import os
 host = os.environ.get('HOST', '127.0.0.1')
 port = int(os.environ.get('PORT', 80))
 
-client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client_socket.connect((host, port))
+serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+serversocket.bind((host, port))
+serversocket.listen(5)
 
-while 1:
-    data = client_socket.recv(512).decode("utf-8")
-    if ( data == 'q' or data == 'Q'):
-        client_socket.close()
-        break
-    else:
-        print("RECIEVED:" , data)
-        data = input("SEND( TYPE q or Q to Quit):")
-        if (data == 'Q' and data == 'q'):
-            client_socket.send(data.encode("utf-8"))
-        else:
-            client_socket.send(data.encode("utf-8"))
-            client_socket.close()
-            break
+while True:
+    connection, address = serversocket.accept()
+    buf = connection.recv(64)
+    if len(buf) > 0:
+        print(buf)
+        connection.sendall(buf)
