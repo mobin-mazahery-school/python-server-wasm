@@ -15,7 +15,7 @@ while 1:
     else:
         print("RECIEVED:" , data)
         data = input("SEND( TYPE q or Q to Quit):")
-        if (data <> 'Q' and data <> 'q'):
+        if (data == 'Q' and data == 'q'):
             client_socket.send(data.encode("utf-8"))
         else:
             client_socket.send(data.encode("utf-8"))
